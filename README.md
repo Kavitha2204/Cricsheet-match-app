@@ -98,19 +98,19 @@ Run Steps Manually
 
 If you want to run each step individually:
 
-# Step 0: Scrape data
+# Step 1: Scrape data
 python scrapper.py
 
-# Step 1: Transform JSONs
+# Step 2: Transform JSONs
 python transform_json.py --input-dir data/raw --output data/processed/flattened.parquet --also-csv
 
-# Step 2: Load into DB
+# Step 3: Load into DB
 python load_to_db.py --csv-prefix data/processed/flattened --db sqlite:///cricket.db
 
-# Step 3: Run SQL analyses
+# Step 4: Run SQL analyses
 python run_sql_analyses.py --db sqlite:///cricket.db --sql-file queries.sql --out sql_results.json
 
-# Step 4: Generate EDA plots
+# Step 5: Generate EDA plots
 python eda.py --sql-results-file sql_results.json --out-dir figures
 
 
